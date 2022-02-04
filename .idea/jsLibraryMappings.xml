@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="PROJECT" libraries="{purecss}" />
+    <file url="PROJECT" libraries="{@popperjs/core, bootstrap, purecss}" />
+    <includedPredefinedLibrary name="Node.js Core" />
   </component>
 </project>

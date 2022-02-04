@@ -2,6 +2,7 @@
   "name": "bookie",
   "version": "1.0.0",
   "dependencies": {
-    "axios": "^0.25.0"
+    "axios": "^0.25.0",
+    "browserify": "^17.0.0"
   }
 }

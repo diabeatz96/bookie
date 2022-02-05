@@ -17,7 +17,7 @@ app.use(
 )
 
 app.get('/', (request, response) => {
-    response.json({ info: 'Node.js, Express, and Postgres API' })
+    response.json({ info: 'API EXPRESS/JS IMPLEMENTATION' })
 })
 
 
@@ -47,13 +47,14 @@ const getUsers = (request, response) => {
 }
 
 const createUser = (request, response) => {
-    const { name, email } = request.formData;
+    const { name, email } = request.body;
 
     pool.query('INSERT INTO users (name, email) VALUES ($1, $2)', [name, email], (error, results) => {
         if (error) {
             throw error
         }
-        response.status(201).send(`User added with ID: ${result.insertId}`)
+        console.log(name, email);
+        response.status(201).send(`User added with ID: ${results.insertId}`)
     })
 }
 
@@ -80,15 +81,15 @@ const getBooks = (request, response) => {
 }
 
 const createBook = (request, response) => {
-    const {book_name, genre, author, isbn} = request.body
+    const {book_name, genre, author, isbn} = request.body;
 
     pool.query('INSERT INTO books (book_name, genre, author, isbn) VALUES ($1, $2, $3, $4)', [book_name, genre, author, isbn], (error, results) => {
         if (error) {
             throw error
         }
+
+        console.log(book_name, genre, author, isbn);
         response.status(201).send(`Book added`)
-        response.json(book_name, genre, author, isbn);
-        console.log(request.body)
     })
 }
 

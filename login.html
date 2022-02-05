@@ -18,22 +18,22 @@
             <a class="pure-menu-heading"></a>
             <ul class="pure-menu-list">
                 <li class="pure-menu-item pure-menu-selected">
-                    <a href="#" class="pure-menu-link">Home</a>
+                    <a href="index.html" class="pure-menu-link">Home</a>
                 </li>
                 <li class="pure-menu-item pure-menu-selected">
-                    <a href="#" class="pure-menu-link">Login</a>
+                    <a href="login.html" class="pure-menu-link">Login</a>
                 </li>
                 <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
                     <a href="#" id="menuLink1" class="pure-menu-link">Books</a>
                     <ul class="pure-menu-children">
                         <li class="pure-menu-item">
-                            <a href="#" class="pure-menu-link">Search Books</a>
+                            <a href="booklist.html" class="pure-menu-link">Search Books</a>
                         </li>
                         <li class="pure-menu-item">
-                            <a href="#" class="pure-menu-link">Add Books to List</a>
+                            <a href="booklist.html" class="pure-menu-link">Add Books to List</a>
                         </li>
                         <li class="pure-menu-item">
-                            <a href="#" class="pure-menu-link">Random Book</a>
+                            <a href="booklist.html" class="pure-menu-link">Random Book</a>
                         </li>
                     </ul>
                 </li>
@@ -45,17 +45,17 @@
 
 <div class = "container text-center">
     <div class="row">
-        <form>
+        <form action="http://localhost:3000/users" method = "post">
             <div class="form-group">
                 <label for="email1">Email address</label>
-                <input type="email" class="form-control" id="email1" aria-describedby="emailHelp" placeholder="Enter email">
+                <input name = email type="email" class="form-control" id="email1" aria-describedby="emailHelp" placeholder="Enter email">
                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
             </div>
             <div class="form-group justify-content-center">
-                <label for="password1">Password</label>
-                <input type="password" class="form-control" id="password1" placeholder="Password">
+                <label for="password1">Name</label>
+                <input name = "name" type= "text" class="form-control" id="password1" placeholder="Name">
             </div>
-            <button type="submit" class="btn btn-primary col-md-2 mt-5">Submit</button>
+            <button type ="submit" class="btn btn-primary col-md-2 mt-5">Submit</button>
         </form>
     </div>
 </div>

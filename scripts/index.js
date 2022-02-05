@@ -1,11 +1,15 @@
-import express from 'express';
 import bodyParser from 'body-parser';
+import express from 'express';
 const app = express()
 const port = 3000
 import * as pg from 'pg'
 const { Pool } = pg.default;
+import multer from 'multer';
+const upload = multer();
+
 
 app.use(bodyParser.json())
+
 app.use(
     bodyParser.urlencoded({
         extended: true,
@@ -43,7 +47,7 @@ const getUsers = (request, response) => {
 }
 
 const createUser = (request, response) => {
-    const { name, email } = request.body
+    const { name, email } = request.formData;
 
     pool.query('INSERT INTO users (name, email) VALUES ($1, $2)', [name, email], (error, results) => {
         if (error) {
@@ -67,7 +71,7 @@ const deleteUser = (request, response) => {
 /** BOOK FUNCTIONS FUNCTIONS */
 
 const getBooks = (request, response) => {
-    pool.query('SELECT * FROM book ORDER BY id ASC', (error, results) => {
+    pool.query('SELECT * FROM books ORDER BY book_id ASC', (error, results) => {
         if (error) {
             throw error
         }
@@ -76,13 +80,15 @@ const getBooks = (request, response) => {
 }
 
 const createBook = (request, response) => {
-    const { book_name, genre, author, isbn } = request.body
+    const {book_name, genre, author, isbn} = request.body
 
-    pool.query('INSERT INTO books (name, email, author, isbn) VALUES ($1, $2, $3, $4)', [book_name, genre, author, isbn], (error, results) => {
+    pool.query('INSERT INTO books (book_name, genre, author, isbn) VALUES ($1, $2, $3, $4)', [book_name, genre, author, isbn], (error, results) => {
         if (error) {
             throw error
         }
-        response.status(201).send(`Book added with ID: ${result.insertId}`)
+        response.status(201).send(`Book added`)
+        response.json(book_name, genre, author, isbn);
+        console.log(request.body)
     })
 }
 
@@ -98,3 +104,8 @@ const deleteBook = (request, response) => {
 }
 
 app.get('/users', getUsers);
+app.get('/books', getBooks);
+app.post('/users', upload.none(), createUser);
+app.post('/books', createBook);
+
+

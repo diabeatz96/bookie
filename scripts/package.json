@@ -6,8 +6,7 @@
     "body-parser": "^1.19.1",
     "browserify": "^17.0.0",
     "express": "^4.17.2",
-    "pg": "^8.7.3",
-    "pg-pool": "^3.5.1"
+    "pg": "^8.7.3"
   },
-  "type": "module"
+  "type" : "module"
 }
